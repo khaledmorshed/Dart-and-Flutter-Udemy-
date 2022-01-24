@@ -1,12 +1,16 @@
 void main() {
   //var person = new Person(); //now new is optional to  create an instance or object
-  var person = Person();
+   var person = Person();
   person.firstName = "morshed";
   person.printName();
 }
 
 class Person{
   String? firstName;
+
+  // Person(name){
+
+  // }
 
   printName() {
     print(firstName);
