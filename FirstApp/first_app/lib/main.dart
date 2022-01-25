@@ -20,7 +20,7 @@ void main() {
     ),
   ));
 
-  runApp(app);
+  runApp(app);// it run a widget or some similar things
 }
 
 
