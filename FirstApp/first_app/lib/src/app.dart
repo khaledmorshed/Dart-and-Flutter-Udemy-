@@ -31,10 +31,11 @@ class AppState extends State<App> {
         onPressed: () {
           // setState method is provide to our app state class when we extend the state base class.
           setState(() {
-            counter += 1;
+            counter++;
           });
         },
       ),
+
       appBar: AppBar(
         title: Text("lets see some images!"),
       ),
