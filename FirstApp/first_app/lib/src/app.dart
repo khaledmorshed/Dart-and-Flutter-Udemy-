@@ -37,7 +37,7 @@ class AppState extends State<App> {
       ),
 
       appBar: AppBar(
-        title: Text("lets see some images!"),
+        title: Text("lets see some Images!"),
       ),
     ));
   }
