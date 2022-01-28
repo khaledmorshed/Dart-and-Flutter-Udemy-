@@ -4,11 +4,8 @@ import 'dart:convert';
 void main() {
   var rawJson = '{"url": "http://blah.jpg", "id": 1}';
 
-  // parseJson json object is a map data structure that has keys and valu
-  // dart doesn't know what are the different of types have key and value inside of parsJson.
-  var parseJson = json.decode(rawJson); // here are presemt all data with map
-  //print(parseJson['url']);
-  var imageModel = new ImageModel(parseJson["id"], parseJson["url"]);
+  var parseJson = json.decode(rawJson);
+  var imageModel = new ImageModel.fromJson(parseJson);
   print(imageModel.id);
   print(imageModel.url);
 }
@@ -18,5 +15,11 @@ class ImageModel {
   int? id;
   String? url;
 
-  ImageModel(this.id, this.url);
+  ImageModel(this.id, this.url);// now this optional
+
+  // this is called name constructor
+  ImageModel.fromJson(parseJson) {
+    id = parseJson['id'];
+    url = parseJson['url'];
+  }
 }
