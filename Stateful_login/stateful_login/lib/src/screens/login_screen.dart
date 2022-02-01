@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stateful_login/src/mixins/validation_mixin.dart';
 
 class LoginScreen extends StatefulWidget {
   createState() {
@@ -6,7 +7,8 @@ class LoginScreen extends StatefulWidget {
   }
 }
 
-class LoginScreenState extends State<LoginScreen> {
+// all the method inside of ValidationMixin now are copied to the LiginScreenState
+class LoginScreenState extends State<LoginScreen> with ValidationMixin{
   // creating an instance of GlobalKey with generic
   final formKey = GlobalKey<FormState>();
   //intance variable
@@ -39,19 +41,9 @@ class LoginScreenState extends State<LoginScreen> {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
           labelText: "Email Address", hintText: "you@example.com"),
-
-      //At fist FormState call the validate() function and validate() function call the all property
-      //of Form widget such as here are Two TextFormField.And TextFormField call validator name
-      //parameter which is kind of function
-      //validoto function return null if valid.ohtherwise return an error massage
-      validator: (value) {
-        //here value comes from the user when one writes inside textfield
-        if (!value!.contains('@')) {
-          return "please enter a valid email";
-        }
-        //it is optional
-        return null;
-      },
+      
+      // not callin validateEmail function. it just passing the refernce of validateEmail to the validator
+      validator: validateEmail,
       // dynamic is optional
       onSaved: (dynamic value) {
         email = value;
@@ -63,11 +55,7 @@ class LoginScreenState extends State<LoginScreen> {
     return TextFormField(
       obscureText: true,
       decoration: InputDecoration(labelText: "Password", hintText: "password"),
-      validator: (value) {
-        if (value!.length < 4) {
-          return "Password must be at least 4 characters";
-        }
-      },
+      validator: validatePassword,
       onSaved: (value) {
         password = value!;
       },
