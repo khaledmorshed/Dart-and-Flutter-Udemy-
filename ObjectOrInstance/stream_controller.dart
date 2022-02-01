@@ -31,6 +31,11 @@ void main() {
   //(ii)here baker is added into stream.
   //(iii)here steam.map is order inspector, transform is cake maker = baker, listen is custumer who will
   //recieve his orederd cake
+
+  //controller.stream = we are taking source of data
+  //map((order) = we are pulling off type of property
+  //transform(baker) = we are repassing data to the transform of baker
+  //listen((cake) = do something with the output
   controller.stream
       .map((order) {
         // map can recieve one value and aslo return one string at a time
