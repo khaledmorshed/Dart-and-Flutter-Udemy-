@@ -41,9 +41,16 @@ void main() {
       .listen((cake) {
         //this is initial argument function which takes true value from StreamTransformer
         print("Here your cake $cake");
-      }, 
-      //this the name parameter which takes onError form StreamTransfomer
-      onError: (err) {
+      },
+          //this the name parameter which takes onError form StreamTransfomer
+          onError: (err) {
         print(err);
       });
+
+
+  //instead of streamTransformer just for store the code
+  var order2 = new Order('chocolate');
+  if (order2.type == 'chocolate') {
+    new Cake();
+  }
 }
