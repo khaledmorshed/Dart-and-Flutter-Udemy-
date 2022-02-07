@@ -73,14 +73,10 @@ class LoginScreen extends StatelessWidget {
           //     : () {
           //         print("Hi there");
           //       },
-          
+
           //snapshot.hasData = At first it checks that the data is present or not..then it will
           // check the error
-          onPressed: snapshot.hasData
-              ? () {
-                  print("Hi there");
-                }
-              : null,
+          onPressed: snapshot.hasData ? bloc.submit : null,
         );
       },
     );

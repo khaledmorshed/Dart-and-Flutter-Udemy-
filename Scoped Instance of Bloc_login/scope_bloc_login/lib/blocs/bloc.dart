@@ -9,8 +9,15 @@ import 'package:rxdart/rxdart.dart';
 class Bloc with Validators {
   // uderscore("_") == private
   //There are two kinds of streams: "Single-subscription" streams and "broadcast" streams.
-  final _emailController = StreamController<String /*can be dynamci*/ >.broadcast();
-  final _passwordController = StreamController<String>.broadcast();
+  //BehaviorSubject = A special StreamController that captures the latest item that
+  //has been added to the controller.
+  //And BehaviorSubject is, by default, a broadcast
+  //controller, in order to fulfill the Rx Subject contract. This means the Subject's stream can
+  //be listened to multiple times.
+  // here broadcast() controller not necessasy when we use BehaviorSubject
+  //BehaviorSubject == StreamController .but some features has less in StreamController
+  final _emailController = BehaviorSubject<String>();
+  final _passwordController = BehaviorSubject<String>();
 
   //Add changed email == it may not be correct
   //Function(String) == optional
@@ -21,9 +28,21 @@ class Bloc with Validators {
   //extract or retrieve or return data from stream == it may not be correct
   //Add data to stream after calling Validators class which data comes from TextField == it may be accurate
   Stream<String> get email => _emailController.stream.transform(validateEmail);
-  Stream<String> get password => _passwordController.stream.transform(validatePassword);
+  Stream<String> get password =>
+      _passwordController.stream.transform(validatePassword);
   //combine two stream into an one stream
-  Stream<bool> get submitValid => Rx.combineLatest2(email, password, (e, p)=> true);
+  Stream<bool> get submitValid =>
+      Rx.combineLatest2(email, password, (e, p) => true);
+
+  // we will pass latest email and password into our submit button
+  //And latest email and password comes from BehaviorSubject
+  submit() {
+    final validEmail = _emailController.value;
+    final validPassword = _passwordController.value;
+
+    print("email is $validEmail");
+    print("password is $validPassword");
+  }
 
   //when i create a StreamController dart alawys open up and check the value.
   // but don't want to stay up forever. so when we are done with the class Bloc
@@ -33,4 +52,3 @@ class Bloc with Validators {
     _passwordController.close();
   }
 }
-
