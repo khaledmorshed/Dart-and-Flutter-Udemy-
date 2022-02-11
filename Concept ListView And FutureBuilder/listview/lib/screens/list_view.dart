@@ -26,9 +26,12 @@ class HomeScreen extends StatelessWidget {
         return FutureBuilder(
           future: getFuture(),
           builder: (context, snapshot) {
-            return snapshot.hasData
+            return Container(
+              height: 100,
+              child: snapshot.hasData
                 ? Text("I am visible $index")
-                : Text("I havent fetched data yet $index");
+                : Text("I havent fetched data yet $index"),
+            );
           },
         );
       },
@@ -38,7 +41,7 @@ class HomeScreen extends StatelessWidget {
   getFuture() {
     return Future.delayed(
       Duration(seconds: 2),
-      ()=> 'hi',
+      () => 'hi',
     );
   }
 }
