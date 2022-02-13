@@ -1,0 +1,11 @@
+
+Abstract class's charactaristic:
+1.why method abstrac declaration of parent class?
+ans: child class must oviride the parent class's method.
+
+2. Body will not be exist body.
+3.one abstract mehod creation means class must be declared abstract.
+4.abstract class must not be necessary a abstract method.
+5.object or instance will not be created of a abstract class
+6.normal class can be created in abstract class
+
