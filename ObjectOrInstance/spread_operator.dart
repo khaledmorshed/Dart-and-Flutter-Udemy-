@@ -6,6 +6,7 @@ void main() {
   // print(list2);
 
   var list = [1, 2, 3];
+  //acutally here list2 is duplicate of list
   var list2 = [0, ...list];
   print(list2);
 }
