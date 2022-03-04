@@ -28,7 +28,7 @@ class Bloc {
   Function(String) get changeEmail => emailController.sink.add;//Function(String) = optional
   Function(String) get changePassword => passwordController.sink.add;
 
-  //it retrieves or regains data from the stream email
+  //it retrieves or emits data from the stream email
   Stream<String> get email => emailController.stream;// Stream<String> = optional
   get password => passwordController.stream;
 }
