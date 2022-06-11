@@ -36,7 +36,13 @@ class ProductsGrid extends StatelessWidget {
       //and recycle and store many concept have but i dont understand
       //And more importand .value means we reuse the provider not calling becasue inside of
       //main.dart file we call provider again ChangeNotifierProvider
+      //ChangeNotifierProvider.value = this is the nested provider and this provider is only
+      // Product(provider).Becausenowhere is calling Product(provider).It is for Product(provider)
+      // not ProductProvider
       itemBuilder: (context, i) => ChangeNotifierProvider.value(
+        //products[i] = this may be equvalent to create: (context) => Product(),
+        //thus we insert the new product information into product model. And
+        //ProductItem will get the data in every iteration with calling Product(Provider)
         value: products[i],
         child: ProductItem(
             //products[i],
